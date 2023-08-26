@@ -1,7 +1,10 @@
 import 'dart:async';
 
-import 'package:car_app_flutter/screen/gridview.dart';
+import 'package:car_app_flutter/constrants/colors.dart';
+import 'package:car_app_flutter/wigets/gridview.dart';
 import 'package:flutter/material.dart';
+
+import '../wigets/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,12 +51,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: tdBGColor,
+      appBar: customAppBar(),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: 200,
+              height: 250,
               child: PageView.builder(
                 itemCount: 5,
                 onPageChanged: (index) {
@@ -72,27 +77,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           left: 4, right: 4, top: 36, bottom: 14),
                       height: 300,
                       decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: tdAmber,
                           borderRadius: BorderRadius.circular(24)),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                        ),
+                        child: Image.network(
+                          '${carsList.elementAt(index)['image']}',
+                          height: 150,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   );
                 },
               ),
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                    5,
-                    (index) => Container(
-                          margin: const EdgeInsets.all(2),
-                          child: Icon(
-                            Icons.circle,
-                            size: 12,
-                            color: pageNo == index
-                                ? Colors.amber
-                                : Colors.grey[300],
-                          ),
-                        )))
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                5,
+                (index) => Container(
+                  margin: const EdgeInsets.all(2),
+                  child: Icon(
+                    Icons.circle,
+                    size: 12,
+                    color: pageNo == index ? tdAmber : Colors.grey[300],
+                  ),
+                ),
+              ),
+            ),
+            CustomGridView(),
           ],
         ),
       )),
