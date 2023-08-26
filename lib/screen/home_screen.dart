@@ -13,13 +13,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int pageNo = 0;
 
+  late final Timer carasouelTimer;
+
   Timer getTimer() {
-    return Timer.periodic(const Duration(seconds: 3), (timer) {
+    return Timer.periodic(const Duration(seconds: 2), (timer) {
       if (pageNo == 4) {
         pageNo = 0;
       } else {
-        pageController.animateToPage(pageNo,
-            duration: const Duration(seconds: 1), curve: Curves.easeInOutCirc);
+        pageController.animateToPage(
+          pageNo,
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeInOutCirc,
+        );
+        pageNo++;
       }
     });
   }
@@ -29,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     pageController = PageController(initialPage: 0, viewportFraction: 0.85);
+    carasouelTimer = getTimer();
     super.initState();
   }
 
@@ -62,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: Container(
                       margin: const EdgeInsets.only(
-                          left: 4, right: 4, top: 36, bottom: 12),
+                          left: 4, right: 4, top: 36, bottom: 14),
                       height: 300,
                       decoration: BoxDecoration(
                           color: Colors.amber,
