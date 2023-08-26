@@ -35,6 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 200,
               child: PageView.builder(
                 itemCount: 5,
+                onPageChanged: (index) {
+                  pageNo = index;
+                  setState(() {});
+                },
                 controller: pageController,
                 itemBuilder: (context, index) {
                   return AnimatedBuilder(
@@ -60,9 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     5,
                     (index) => Container(
                           margin: const EdgeInsets.all(2),
-                          child: const Icon(
+                          child: Icon(
                             Icons.circle,
                             size: 12,
+                            color: pageNo == index
+                                ? Colors.amber
+                                : Colors.grey[300],
                           ),
                         )))
           ],
