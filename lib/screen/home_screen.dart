@@ -18,6 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -33,6 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context, child) {
                     return child!;
                   },
+                  child: Container(
+                    height: 300,
+                    color: Colors.amber[200],
+                  ),
                 );
               },
             ),
