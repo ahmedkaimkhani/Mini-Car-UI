@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    pageController = PageController();
+    pageController = PageController(initialPage: 0, viewportFraction: 0.85);
     super.initState();
   }
 
@@ -30,22 +30,40 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
         child: Column(
           children: [
-            PageView.builder(
-              itemCount: 5,
-              controller: pageController,
-              itemBuilder: (context, index) {
-                return AnimatedBuilder(
-                  animation: pageController,
-                  builder: (context, child) {
-                    return child!;
-                  },
-                  child: Container(
-                    height: 300,
-                    color: Colors.amber[200],
-                  ),
-                );
-              },
+            SizedBox(
+              height: 200,
+              child: PageView.builder(
+                itemCount: 5,
+                controller: pageController,
+                itemBuilder: (context, index) {
+                  return AnimatedBuilder(
+                    animation: pageController,
+                    builder: (context, child) {
+                      return child!;
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                          left: 4, right: 4, top: 36, bottom: 12),
+                      height: 300,
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(24)),
+                    ),
+                  );
+                },
+              ),
             ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                    5,
+                    (index) => Container(
+                          margin: const EdgeInsets.all(2),
+                          child: const Icon(
+                            Icons.circle,
+                            size: 12,
+                          ),
+                        )))
           ],
         ),
       )),
