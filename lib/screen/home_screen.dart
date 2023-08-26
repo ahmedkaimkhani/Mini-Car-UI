@@ -1,3 +1,4 @@
+import 'package:car_app_flutter/screen/gridview.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,21 +21,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          PageView.builder(
-            itemCount: 5,
-            controller: pageController,
-            itemBuilder: (context, index) {
-              return AnimatedBuilder(
-                animation: pageController,
-                builder: (context, child) {
-                  return child!;
-                },
-              );
-            },
-          ),
-        ],
+          child: SingleChildScrollView(
+        child: Column(
+          children: [
+            PageView.builder(
+              itemCount: 5,
+              controller: pageController,
+              itemBuilder: (context, index) {
+                return AnimatedBuilder(
+                  animation: pageController,
+                  builder: (context, child) {
+                    return child!;
+                  },
+                );
+              },
+            ),
+            CustomGridView()
+          ],
+        ),
       )),
     );
   }
