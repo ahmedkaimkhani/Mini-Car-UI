@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:car_app_flutter/screen/gridview.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int pageNo = 0;
+
+  Timer getTimer() {
+    return Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (pageNo == 4) {
+        pageNo = 0;
+      } else {
+        pageController.animateToPage(pageNo,
+            duration: const Duration(seconds: 1), curve: Curves.easeInOutCirc);
+      }
+    });
+  }
+
   late final PageController pageController;
 
   @override
