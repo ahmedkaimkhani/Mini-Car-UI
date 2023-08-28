@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constrants/colors.dart';
@@ -22,10 +23,15 @@ AppBar customAppBar() {
               color: tdBlack, fontWeight: FontWeight.bold, fontSize: 24),
         ),
         const Icon(
-          Icons.menu,
+          CupertinoIcons.cart,
           color: tdBlack,
           size: 30,
         ),
+        const Icon(
+          CupertinoIcons.heart_fill,
+          color: tdBlack,
+          size: 30,
+        )
       ],
     ),
     elevation: 0,
