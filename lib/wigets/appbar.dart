@@ -8,16 +8,6 @@ AppBar customAppBar() {
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Icon(
-          Icons.menu,
-          color: tdBlack,
-          size: 30,
-        ),
-        const Text(
-          'C a r  W a l y',
-          style: TextStyle(
-              color: tdBlack, fontWeight: FontWeight.bold, fontSize: 24),
-        ),
         Container(
           height: 40,
           width: 40,
@@ -25,7 +15,17 @@ AppBar customAppBar() {
             radius: 20,
             backgroundImage: AssetImage('assets/images/ahmed.jpg'),
           ),
-        )
+        ),
+        const Text(
+          'C a r  W a l y',
+          style: TextStyle(
+              color: tdBlack, fontWeight: FontWeight.bold, fontSize: 24),
+        ),
+        const Icon(
+          Icons.menu,
+          color: tdBlack,
+          size: 30,
+        ),
       ],
     ),
     elevation: 0,
