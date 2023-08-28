@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Timer getTimer() {
     return Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (pageNo == 4) {
+      if (pageNo == 5) {
         pageNo = 0;
       } else {
         pageController.animateToPage(
